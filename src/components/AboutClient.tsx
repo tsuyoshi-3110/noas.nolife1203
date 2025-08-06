@@ -411,7 +411,8 @@ export default function AboutClient() {
                       <Image
                         src={contentMediaUrl}
                         alt="current-media"
-                        className="w-full h-full object-cover"
+                        className="object-cover"
+                        fill
                       />
                     )}
                   </div>
