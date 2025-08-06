@@ -31,11 +31,11 @@ export const metadata: Metadata = {
     title: "BEAUTY&STUDIO Eight｜福岡市西区のビューティーサロン",
     description:
       "福岡市西区今宿のBEAUTY&STUDIO Eightでは、小顔キャビや筋膜リリースなどの施術を提供中。リラックスしたひとときをお過ごしください。",
-    url: "https://noasNolife1203-homepage.vercel.app/",
+    url: "https://beautystudioeight.shop/",
     siteName: "BEAUTY&STUDIO Eight",
     images: [
       {
-        url: "/logo.png",
+        url: "https://beautystudioeight.shop/logo.png",
         width: 1200,
         height: 630,
       },
@@ -63,12 +63,7 @@ export default function RootLayout({
       `}
     >
       <head>
-        <link
-          rel="preload"
-          as="image"
-          href="/logo.png"
-          type="image/webp"
-        />
+        <link rel="preload" as="image" href="/logo.png" type="image/png" />
         <meta name="theme-color" content="#ffffff" />
         <meta
           name="google-site-verification"
@@ -105,7 +100,7 @@ export default function RootLayout({
               streetAddress: "今宿2-12-3 スリーアイランド今宿802",
             },
             email: "noas.nolife1203@gmail.com",
-            url: "https://noasNolife1203-homepage.vercel.app",
+            url: "https://beautystudioeight.shop",
           })}
         </Script>
       </body>

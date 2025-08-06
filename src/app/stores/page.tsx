@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "店舗一覧｜BEAUTY&STUDIO Eight",
     description:
       "BEAUTY&STUDIO Eight の店舗紹介ページ。福岡市西区今宿の施術ルームなど、各拠点の情報を掲載しています。",
-    url: "https://noasNolife1203-homepage.vercel.app/stores",
+    url: "https://beautystudioeight.shop/stores",
     siteName: "BEAUTY&STUDIO Eight",
     images: [
       {
@@ -33,9 +33,8 @@ export default function StoresPage() {
           BEAUTY&STUDIO Eight ─ 店舗一覧
         </h1>
         <p className="leading-relaxed text-white/80">
-          <strong>BEAUTY&STUDIO Eight</strong> は
-          <strong>福岡市西区今宿</strong> を拠点に展開する
-          ビューティー＆リラクゼーションサロンです。
+          <strong>BEAUTY&STUDIO Eight</strong> は<strong>福岡市西区今宿</strong>{" "}
+          を拠点に展開する ビューティー＆リラクゼーションサロンです。
           落ち着いたプライベート空間で、
           <br className="hidden lg:block" />
           小顔ケアや筋膜リリースなどの施術をご提供しています。
