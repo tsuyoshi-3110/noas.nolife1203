@@ -35,9 +35,10 @@ export const metadata: Metadata = {
     siteName: "BEAUTY&STUDIO Eight",
     images: [
       {
-        url: "https://beautystudioeight.shop/logo-ogp2.jpg",
+        url: "https://beautystudioeight.shop/ogpLogo.jpg?v=2", // ←ここをJPEGに
         width: 1200,
         height: 630,
+        alt: "BEAUTY&STUDIO Eight OGP画像",
       },
     ],
     locale: "ja_JP",
@@ -63,16 +64,30 @@ export default function RootLayout({
       `}
     >
       <head>
-        <link rel="preload" as="image" href="/logo-ogp2.jpg" type="image/png" />
+        <link
+          rel="preload"
+          as="image"
+          href="/ogpLogo.jpg?v=2"
+          type="image/jpeg"
+        />
         <meta name="theme-color" content="#ffffff" />
         <meta
-          name="google-site-verification"
-          content="UcH7-5B4bwpJxxSjIpBskahFhBRTSLRJUZ8A3LAnnFE"
+          property="og:title"
+          content="BEAUTY&STUDIO Eight｜福岡市西区のビューティーサロン"
         />
         <meta
-          name="google-site-verification"
-          content="h2O77asgMDfUmHBb7dda53OOJdsxv9GKXd5rrRgIQ-k"
+          property="og:description"
+          content="福岡市西区今宿のBEAUTY&STUDIO Eightでは、小顔キャビや筋膜リリースなどの施術を提供中。"
         />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beautystudioeight.shop/" />
+        <meta
+          property="og:image"
+          content="https://beautystudioeight.shop/ogpLogo.jpg?v=2"
+        />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
       </head>
       <body className="relative min-h-screen font-[var(--selected-font)]">
         <SubscriptionOverlay siteKey={siteKey} />
