@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "BEAUTY&STUDIO Eight",
     images: [
       {
-        url: "https://beautystudioeight.shop/logo-ogp.png",
+        url: "https://beautystudioeight.shop/ogpLogo.png",
         width: 1200,
         height: 630,
       },
@@ -63,7 +63,7 @@ export default function RootLayout({
       `}
     >
       <head>
-        <link rel="preload" as="image" href="/logo-ogp.png" type="image/png" />
+        <link rel="preload" as="image" href="/ogpLogo.png" type="image/png" />
         <meta name="theme-color" content="#ffffff" />
         <meta
           name="google-site-verification"
