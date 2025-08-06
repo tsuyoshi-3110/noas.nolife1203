@@ -217,7 +217,7 @@ export default function AboutClient() {
       setUploadProgress(null); // ← バーを消す
       setUploadTask(null); // ← タスク参照クリア
     }
-  }, [draftText, draftFile, contentMediaUrl, docRef]);
+  }, [draftText, draftFile, contentMediaUrl, docRef, contentMediaType]);
 
   if (!gradient) return <CardSpinner />;
   if (loadingDoc) return <CardSpinner />;
