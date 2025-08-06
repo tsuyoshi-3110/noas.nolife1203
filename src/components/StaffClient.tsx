@@ -53,6 +53,20 @@ import { motion, useInView } from "framer-motion";
 type MediaType = "image" | "video";
 
 const SITE_KEY = "noasNolife1203";
+const IMAGE_MIME_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+const VIDEO_MIME_TYPES = [
+  "video/mp4",
+  "video/webm",
+  "video/ogg",
+  "video/quicktime",
+  "video/x-m4v",
+  "video/x-msvideo",
+  "video/x-ms-wmv",
+  "video/mpeg",
+  "video/3gpp",
+  "video/3gpp2",
+];
+const MAX_VIDEO_SEC = 30;
 
 export default function StaffClient() {
   const [list, setList] = useState<Product[]>([]);
@@ -125,7 +139,6 @@ export default function StaffClient() {
   const saveProduct = async () => {
     if (uploading) return;
     if (!title.trim()) return alert("タイトル必須");
-    // if (price === "") return alert("価格を入力してください");
     if (formMode === "add" && !file) return alert("メディアを選択してください");
 
     try {
@@ -133,20 +146,14 @@ export default function StaffClient() {
       let mediaURL = editing?.mediaURL ?? "";
       let mediaType: MediaType = editing?.mediaType ?? "image";
 
-      if (formMode === "add" && !file)
-        return alert("メディアを選択してください");
-
       if (file) {
-        const isVideo = file.type.startsWith("video/");
-        mediaType = isVideo ? "video" : "image";
+        const isImage = IMAGE_MIME_TYPES.includes(file.type);
+        const isVideo = VIDEO_MIME_TYPES.includes(file.type);
 
-        const isValidImage =
-          file.type === "image/jpeg" || file.type === "image/png";
-        const isValidVideo =
-          file.type === "video/mp4" || file.type === "video/quicktime";
-
-        if (!isValidImage && !isValidVideo) {
-          alert("対応形式：画像（JPEG, PNG）／動画（MP4, MOV）");
+        if (!isImage && !isVideo) {
+          alert(
+            "対応形式：画像（JPEG, PNG, WEBP, GIF）／動画（MP4, MOV など）"
+          );
           return;
         }
 
@@ -155,11 +162,35 @@ export default function StaffClient() {
           return;
         }
 
-        const ext = isVideo
-          ? file.type === "video/quicktime"
-            ? "mov"
-            : "mp4"
-          : "jpg";
+        mediaType = isVideo ? "video" : "image";
+
+        const ext = (() => {
+          if (isVideo) {
+            switch (file.type) {
+              case "video/quicktime":
+                return "mov";
+              case "video/webm":
+                return "webm";
+              case "video/ogg":
+                return "ogv";
+              case "video/x-m4v":
+                return "m4v";
+              case "video/x-msvideo":
+                return "avi";
+              case "video/x-ms-wmv":
+                return "wmv";
+              case "video/mpeg":
+                return "mpg";
+              case "video/3gpp":
+                return "3gp";
+              case "video/3gpp2":
+                return "3g2";
+              default:
+                return "mp4";
+            }
+          }
+          return "jpg";
+        })();
 
         const uploadFile = isVideo
           ? file
@@ -189,11 +220,9 @@ export default function StaffClient() {
         const downloadURL = await getDownloadURL(storageRef);
         if (!downloadURL) throw new Error("画像URLの取得に失敗しました");
 
-        // キャッシュバスターで強制更新
         mediaURL = `${downloadURL}?v=${uuid()}`;
         setProgress(null);
 
-        // 拡張子変更に伴う旧ファイル削除
         if (formMode === "edit" && editing) {
           const oldExt = editing.mediaType === "video" ? "mp4" : "jpg";
           if (oldExt !== ext) {
@@ -207,23 +236,18 @@ export default function StaffClient() {
       type ProductPayload = {
         title: string;
         body: string;
-        // price: number;
         mediaURL: string;
         mediaType: "image" | "video";
         originalFileName?: string;
-        // taxIncluded: boolean;
       };
 
       const payload: ProductPayload = {
         title,
         body,
-        // price,
         mediaURL,
         mediaType,
-        // taxIncluded,
       };
 
-      // originalFileName があるときだけ追加
       const originalFileName = file?.name || editing?.originalFileName;
       if (originalFileName) {
         payload.originalFileName = originalFileName;
@@ -478,10 +502,35 @@ export default function StaffClient() {
                 </div>
               )}
             </div>
+            <label>画像 / 動画 (30秒以内)</label>
             <input
               type="file"
-              accept="image/*,video/mp4"
-              onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+              accept={[...IMAGE_MIME_TYPES, ...VIDEO_MIME_TYPES].join(",")}
+              onChange={(e) => {
+                const f = e.target.files?.[0];
+                if (!f) return;
+
+                const isVideo = f.type.startsWith("video/");
+                if (!isVideo) {
+                  setFile(f);
+                  return;
+                }
+
+                const blobURL = URL.createObjectURL(f);
+                const vid = document.createElement("video");
+                vid.preload = "metadata";
+                vid.src = blobURL;
+
+                vid.onloadedmetadata = () => {
+                  URL.revokeObjectURL(blobURL);
+                  if (vid.duration > MAX_VIDEO_SEC) {
+                    alert(`動画は ${MAX_VIDEO_SEC} 秒以内にしてください`);
+                    e.target.value = ""; // リセット
+                    return;
+                  }
+                  setFile(f);
+                };
+              }}
               className="bg-gray-500 text-white w-full h-10 px-3 py-1 rounded"
               disabled={uploading}
             />
@@ -549,13 +598,13 @@ export function StaffCard({
   return (
     <motion.div
       ref={ref}
-      layout
+      layout={isDragging ? false : true}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{
-        duration: 0.6,
-        ease: "easeOut",
-      }}
+      transition={
+        isDragging ? { duration: 0 } : { duration: 0.6, ease: "easeOut" }
+      }
+      style={isDragging ? { transform: undefined } : undefined}
       className={clsx(
         "flex flex-col h-full border rounded-lg overflow-hidden shadow relative transition-colors duration-200",
         "bg-gradient-to-b",
