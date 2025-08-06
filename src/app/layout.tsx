@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "BEAUTY&STUDIO Eight",
     images: [
       {
-        url: "https://beautystudioeight.shop/ogpLogo.jpg?v=2", // ←ここをJPEGに
+        url: "https://beautystudioeight.shop/ogpImage.png", // ←ここをJPEGに
         width: 1200,
         height: 630,
         alt: "BEAUTY&STUDIO Eight OGP画像",
@@ -67,8 +67,8 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/ogpLogo.jpg?v=2"
-          type="image/jpeg"
+          href="/ogpImage.png"
+          type="image/png"
         />
         <meta name="theme-color" content="#ffffff" />
         <meta
@@ -83,9 +83,9 @@ export default function RootLayout({
         <meta property="og:url" content="https://beautystudioeight.shop/" />
         <meta
           property="og:image"
-          content="https://beautystudioeight.shop/ogpLogo.jpg?v=2"
+          content="https://beautystudioeight.shop/ogpImage.png"
         />
-        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:type" content="image/jpng" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
       </head>
