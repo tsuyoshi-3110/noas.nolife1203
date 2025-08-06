@@ -88,6 +88,7 @@ export default function RootLayout({
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta name="google-site-verification" content="6DnTLKBbd0vcq80lMMILd54Jw3D9jvWpsnZsPlsT4M4" />
       </head>
       <body className="relative min-h-screen font-[var(--selected-font)]">
         <SubscriptionOverlay siteKey={siteKey} />
