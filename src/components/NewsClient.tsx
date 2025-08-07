@@ -403,7 +403,7 @@ export default function NewsClient() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 overflow-y-auto">
           {/* ▼ ② モーダル本体にも最大高さを指定し、中だけスクロールできるように */}
           <div
-            className="bg-white rounded-lg p-6 w-full max-w-md space-y-4 my-8   /* ← my-8 で上下余白 */
+            className="bg-white rounded-lg p-6 w-full max-w-md space-y-4 my-8
                 max-h-[90vh] overflow-y-auto"
           >
             <h3 className="text-xl font-bold text-center">
@@ -465,10 +465,16 @@ export default function NewsClient() {
 
             {/* ---------- AI 生成ボタン ---------- */}
             <button
-              onClick={() => setShowAIModal(true)}
+              onClick={() => {
+                if (!title.trim()) {
+                  alert("タイトルを入力してください。");
+                  return;
+                }
+                setShowAIModal(true); // モーダルを開く
+              }}
               className="bg-purple-600 text-white w-full py-2 rounded"
             >
-              AIで作成
+              AIで本文作成
             </button>
 
             {/* ---------- バリデーションエラー ---------- */}
@@ -563,7 +569,10 @@ export default function NewsClient() {
             </button>
 
             <button
-              onClick={() => setShowAIModal(false)}
+              onClick={() => {
+                setShowAIModal(false);
+                setKeywords(["", "", ""]);
+              }}
               className="w-full py-2 rounded bg-gray-300"
             >
               閉じる
