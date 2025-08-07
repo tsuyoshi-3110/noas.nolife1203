@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "施術メニュー一覧｜BEAUTY&STUDIO Eight",
     description:
       "福岡市西区今宿のBEAUTY&STUDIO Eightによる施術メニュー一覧。ハーブピーリング、小顔ケア、筋膜リリースなどを写真付きでご案内します。",
-    url: "https://beautystudioeight.shop/products",
+    url: "https://www.beautystudioeight.shop/products",
     siteName: "BEAUTY&STUDIO Eight",
     images: [
       {

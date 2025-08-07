@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "当店の思い｜甘味処 よって屋",
     description:
       "ふんわり生地とこだわりクリームで皆様に笑顔を。大阪市〇〇区で営業中。",
-    url: "https://beautystudioeight.shop/about",
+    url: "https://www.beautystudioeight.shop/about",
     siteName: "甘味処 よって屋",
     images: [
       {

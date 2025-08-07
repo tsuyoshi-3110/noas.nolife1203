@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "店舗一覧｜BEAUTY&STUDIO Eight",
     description:
       "BEAUTY&STUDIO Eight の店舗紹介ページ。福岡市西区今宿の施術ルームなど、各拠点の情報を掲載しています。",
-    url: "https://beautystudioeight.shop/stores",
+    url: "https://www.beautystudioeight.shop/stores",
     siteName: "BEAUTY&STUDIO Eight",
     images: [
       {

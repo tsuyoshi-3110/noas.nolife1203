@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "BEAUTY&STUDIO Eight｜福岡市西区のビューティーサロン",
     description:
       "小顔キャビや筋膜リリース、ハーブピーリングなど幅広い施術をご提供するBEAUTY&STUDIO Eightのトップページです。",
-    url: "https://beautystudioeight.shop/",
+    url: "https://www.beautystudioeight.shop/",
     siteName: "BEAUTY&STUDIO Eight",
     images: [
       {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     type: "website",
   },
-  alternates: { canonical: "https://beautystudioeight.shop/" },
+  alternates: { canonical: "https://www.beautystudioeight.shop/" },
 };
 
 export default function HomePage() {
@@ -67,7 +67,7 @@ export default function HomePage() {
               streetAddress: "2-12-3 スリーアイランド今宿802",
             },
             email: "noas.nolife1203@gmail.com",
-            url: "https://beautystudioeight.shop/",
+            url: "https://www.beautystudioeight.shop/",
           }),
         }}
       />

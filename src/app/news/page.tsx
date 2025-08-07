@@ -9,13 +9,13 @@ export const metadata: Metadata = {
     title: "お知らせ｜BEAUTY&STUDIO Eight",
     description:
       "福岡市西区今宿のビューティーサロン『BEAUTY&STUDIO Eight』からのお知らせ。最新施術メニューや営業時間の変更、キャンペーン情報などを掲載中。",
-    url: "https://beautystudioeight.shop/news",
+    url: "https://www.beautystudioeight.shop/news",
     siteName: "BEAUTY&STUDIO Eight",
     images: [{ url: "/ogp-news.jpg", width: 1200, height: 630 }],
     locale: "ja_JP",
     type: "website",
   },
-  alternates: { canonical: "https://beautystudioeight.shop/news" },
+  alternates: { canonical: "https://www.beautystudioeight.shop/news" },
 };
 
 export default function NewsPage() {
