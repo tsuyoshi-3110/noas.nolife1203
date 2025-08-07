@@ -39,20 +39,24 @@ const DEFAULT_START = calcStart(30); // デフォルト = 過去 30 日
 const PAGE_LABELS: Record<string, string> = {
   home: "ホーム",
   about: "当店の思い",
-  products: "商品一覧ページ",
+  products: "施工実績一覧ページ",
   stores: "店舗一覧ページ",
   "uber-eats": "デリバリーページ",
   news: "お知らせページ",
   email: "メールアクセス",
   map_click: "マップアクセス",
   analytics: "アクセス解析",
+  staffs: "スタッフ紹介ぺージ",
+  jobApp: "応募ページ",
 };
 
 const EVENT_LABELS: Record<string, string> = {
   home_stay_seconds_home: "ホーム滞在",
   home_stay_seconds_about: "当店の思い滞在",
-  home_stay_seconds_products: "商品一覧滞在",
+  home_stay_seconds_products: "施工実績滞在",
   home_stay_seconds_stores: "店舗一覧滞在",
+  home_stay_seconds_staffs: "スタッフ紹介滞在",
+  home_stay_seconds_jobApp: "応募滞在",
   home_stay_seconds_news: "お知らせ滞在",
   home_stay_seconds_email: "メールアクセス滞在",
   home_stay_seconds_map_click: "マップアクセス滞在",
