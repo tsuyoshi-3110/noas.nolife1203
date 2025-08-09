@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "BEAUTY&STUDIO Eight",
     images: [
       {
-        url: "https://www.beautystudioeight.shop/ogpLogo_v2.png?v=2", // ←ここをJPEGに
+        url: "https://www.beautystudioeight.shop/ogpLogo_v2.jpg?v=2",
         width: 1200,
         height: 630,
         alt: "BEAUTY&STUDIO Eight OGP画像",
